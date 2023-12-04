@@ -48,7 +48,7 @@ int main()
             sum += count_points(nums_list);
         }
         input_file.close();
-        std::cout << "Sum of IDs: " << sum << std::endl;
+        std::cout << "Total points: " << sum << std::endl;
     }
     else
     {
