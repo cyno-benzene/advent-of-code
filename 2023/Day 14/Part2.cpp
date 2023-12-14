@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
-// took 1.3 seconds to compile and run on my machine
+// took like 20 seconds to compile and run oof
+// A billion would probably require a month or somethin to complete
 
 void cat_input(std::string file_name, std::vector<std::string> &lines)
 {
@@ -49,6 +50,7 @@ void print_platform(const std::vector<std::vector<char>> &vec)
 }
 
 // Let the boulders fight against gravity
+// An amatuer brute force approach
 void tilt_platform(std::vector<std::vector<char>> &vec)
 {
     // ^
@@ -140,15 +142,12 @@ void calc_load(const std::vector<std::vector<char>> &vec)
     int64_t load = 0;
     for (int64_t i = 0; i < vec.size(); i++)
     {
-        for (int64_t j = vec[i].size() - 1; j >= 0; j--)
+        for (int64_t j = 0; j < vec[i].size(); j++)
         {
-            if (vec[i][j] == 'O')
-            {
-                load += vec[i].size() - j;
-            }
+            if (vec[i][j] == 'O') load += vec.size() - i;
         }
     }
-    std::cout << "Load: " << load << '\n';
+    std::cout << load << std::endl;
 }
 
 int main()
@@ -161,10 +160,10 @@ int main()
 
     lines.clear();
 
-    // while loop running a billion times
-    for (int i = 0; i < 1000000000; ++i) tilt_platform(rotated);
+    // loop running a billion(thousand) times
+    for (int i = 0; i < 1000; i++) tilt_platform(rotated);
 
     calc_load(rotated);
-
+    
     return 0;
 }
